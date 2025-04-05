@@ -3158,11 +3158,18 @@ td:last-child {
 .grid-list-items-new {
     --gap: calc(var(--gutter) * 2);
     --min-width: 360px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* 2 equal parts */
-    -moz-column-gap: var(--gap);
-    column-gap: var(--gap);
+    display: flex;
+    flex-direction: column;
+    /* Force items into a single column */
+    gap: var(--gap);
+    /* Adds spacing between items */
+}
+
+.grid-list-items-new>* {
+    flex: 1 1 var(--min-width);
+    /* Items will shrink and wrap if needed */
+    max-width: 100%;
+    /* Ensures items do not exceed container width */
 }
 
 .grid-list-items__item {
